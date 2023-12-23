@@ -1,5 +1,7 @@
 import React from "react";
 import Logo from "./logo";
+import CartButton from "./cart-button";
+import UserNav from "./user-nav";
 
 export default function Header() {
   return (
@@ -7,8 +9,8 @@ export default function Header() {
       <div className="container ms-auto p-4 flex items-center justify-between">
         <Logo />
         <div className="flex items-center justify-center space-x-4">
-          {/* <CartButton /> */}
-          {/* <UserNav /> */}
+          <CartButton />
+          <UserNav />
         </div>
       </div>
     </header>
