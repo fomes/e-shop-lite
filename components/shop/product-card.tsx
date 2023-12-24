@@ -13,17 +13,17 @@ import { Product } from "@/types";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
+import { toast } from "react-toastify";
 
 export default function ProductCard({
   id,
   name,
-  description,
   price,
-  currency,
   image,
   images,
+  currency,
+  description,
 }: Product) {
-
   const { addItem } = useShoppingCart();
 
   const formattedPrice = formatCurrencyString({
@@ -32,7 +32,19 @@ export default function ProductCard({
     language: "pt-BR",
   });
 
-  async function addToCart() {}
+  async function addToCart(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    // addItem({
+    //   id,
+    //   name,
+    //   description,
+    //   price: Number(price),
+    //   currency,
+    //   image,
+    // });
+
+    toast(`Produto ${name} adciionado!`);
+  }
 
   return (
     <Card>

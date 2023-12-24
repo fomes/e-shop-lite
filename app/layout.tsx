@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/layout/header";
 import { Inter, Oxygen } from "next/font/google";
 import AppCartProvider from "@/components/shop/app-cart-provider";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./globals.css";
 
@@ -26,6 +28,7 @@ export default function RootLayout({
         <AppCartProvider>
           <Header />
           <main className="flex-grow">{children}</main>
+          <ToastContainer />
         </AppCartProvider>
       </body>
     </html>
