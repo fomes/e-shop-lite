@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-
-import { toast } from "react-toastify";
 import { Loader, Trash2 } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
 
@@ -21,7 +19,25 @@ export default function Cart() {
   const { cartCount, cartDetails, redirectToCheckout } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  async function checkout() {}
+  async function checkout() {
+    setIsCheckingOut(true);
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(cartDetails),
+      });
+
+      const { id } = await res.json();
+      const result = await redirectToCheckout(id);
+      setIsCheckingOut(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <section className="container flex flex-col my-2 space-y-2">
