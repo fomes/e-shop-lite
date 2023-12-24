@@ -12,6 +12,7 @@ import {
 import { Product } from "@/types";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 
 export default function ProductCard({
   id,
@@ -22,6 +23,15 @@ export default function ProductCard({
   image,
   images,
 }: Product) {
+
+  const { addItem } = useShoppingCart();
+
+  const formattedPrice = formatCurrencyString({
+    value: Number(price),
+    currency,
+    language: "pt-BR",
+  });
+
   async function addToCart() {}
 
   return (
@@ -46,7 +56,7 @@ export default function ProductCard({
       <CardFooter className="flex items-center justify-between">
         <div>
           <p>Preço</p>
-          <p>{price}</p>
+          <p>{formattedPrice}</p>
         </div>
 
         <Button size={"lg"} variant={"default"} onClick={addToCart}>

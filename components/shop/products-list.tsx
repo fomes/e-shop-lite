@@ -2,7 +2,7 @@ import stripe from "@/lib/stripe";
 import { Product } from "@/types";
 import React from "react";
 import Stripe from "stripe";
-import ProductCard from "./product-cart";
+import ProductCard from "./product-card";
 
 export async function getProducts() {
   try {

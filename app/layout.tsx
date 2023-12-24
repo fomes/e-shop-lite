@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
-import { Inter, Oxygen } from "next/font/google";
-import "./globals.css";
+import type, { Metadata } from "next";
+
 import { cn } from "@/lib/utils";
 import Header from "@/components/layout/header";
+import { Inter, Oxygen } from "next/font/google";
+import AppCartProvider from "@/components/shop/app-cart-provider";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const oxygem = Oxygen({ weight: ["300", "400", "700"], subsets: ["latin"] });
@@ -20,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(oxygem.className, "min-h-screen flex flex-col")}>
-        <Header />
-        <main className="flex-grow">{children}</main>
+        <AppCartProvider>
+          <Header />
+          <main className="flex-grow">{children}</main>
+        </AppCartProvider>
       </body>
     </html>
   );
