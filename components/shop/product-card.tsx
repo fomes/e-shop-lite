@@ -34,14 +34,14 @@ export default function ProductCard({
 
   async function addToCart(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    // addItem({
-    //   id,
-    //   name,
-    //   description,
-    //   price: Number(price),
-    //   currency,
-    //   image,
-    // });
+    addItem({
+      id,
+      name,
+      description,
+      price: Number(price),
+      currency,
+      image,
+    });
 
     toast(`Produto ${name} adciionado!`);
   }
